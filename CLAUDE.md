@@ -97,14 +97,19 @@ Deployed via **GitHub Pages**, building from the `main` branch. Pushing to
 `main` publishes directly — there is no staging environment, so preview
 locally first.
 
-A custom domain is planned but **not yet connected**. Once DNS is wired up:
-- Update this section with the live domain.
-- Confirm the `CNAME` file (or GitHub Pages custom domain setting) is
-  documented here.
-- Note any DNS provider details a future maintainer would need if the domain
-  ever needs to move or be renewed.
+**Live at https://eaberkeley.com.** The custom domain is connected via the
+`CNAME` file in the repo root (contents: `eaberkeley.com`), which GitHub Pages
+reads on each build. Don't delete or rename that file — removing it drops the
+custom domain and the site reverts to the default `github.io` address.
 
-**TODO for whoever sets up the custom domain: update this section.**
+Note that absolute URLs elsewhere in the repo (the Open Graph `og:image` and
+`og:url` tags in each page's `<head>`) hardcode `https://eaberkeley.com`. If the
+domain ever changes, those need updating too — social link previews break
+silently otherwise, with no visible error on the site itself.
+
+**Still undocumented:** which DNS provider the domain is registered with, and
+who holds the account. A future maintainer will need this if the domain has to
+be moved or renewed. Whoever knows: please add it here.
 
 ## Planned features (roadmap, not yet built)
 
