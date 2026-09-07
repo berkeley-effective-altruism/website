@@ -137,7 +137,7 @@ framework rewrite of the whole site.
 
 This site is a club asset, not any one person's project. Concretely:
 
-- The GitHub repo lives under the **Berkeley EA club org**, not a personal
+- The GitHub repo lives under the **EA Berkeley club org**, not a personal
   account.
 - Maintainers (current officers) should be added as **GitHub org Owners**,
   not given shared/shared-personal logins. This keeps access auditable and

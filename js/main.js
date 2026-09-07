@@ -1,4 +1,4 @@
-// Berkeley EA site — shared behavior
+// EA Berkeley site — shared behavior
 
 document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav-toggle");
