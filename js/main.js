@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var header = document.querySelector(".site-header");
   if (header) {
     var lastScrollY = window.scrollY;
-    var ticking = false;
+    var headerTicking = false;
     var updateHeaderVisibility = function () {
       var currentScrollY = window.scrollY;
       var delta = currentScrollY - lastScrollY;
@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
         header.classList.remove("is-hidden");
       }
       lastScrollY = currentScrollY;
-      ticking = false;
+      headerTicking = false;
     };
     window.addEventListener(
       "scroll",
       function () {
-        if (!ticking) {
+        if (!headerTicking) {
           window.requestAnimationFrame(updateHeaderVisibility);
-          ticking = true;
+          headerTicking = true;
         }
       },
       { passive: true }
