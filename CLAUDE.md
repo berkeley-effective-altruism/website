@@ -177,12 +177,13 @@ non-developer maintainer to learn:
 - First run of the script requires a one-time Google OAuth consent click
   from whoever has access to the organizing account.
 
-**Status as of this writing:** the Form, Sheet, and Script are built and
+**Status as of this writing:** the Form, Sheet, and Script are all built,
 both reminder functions have been manually tested (each sends a working
-email to the organizer). The Form itself is **intentionally left
-unpublished** (not yet accepting public responses) — publish it and swap
-its real URL into `fellowship.html`'s "Missed the deadline?" card before
-relying on this for a live cohort.
+email to the organizer), the Form is **published and live**, and its real
+URL is wired into `fellowship.html`'s "Missed the deadline?" card. The
+`SPRING_REMINDER_DATE` constant in the script is still a placeholder —
+confirm the real UC Berkeley spring 2027 start date and update it before
+that trigger matters.
 
 None of this lives in this git repo — the Form, Sheet, and Script live in
 Google Drive under the club's account. `fellowship.html` only links out to
