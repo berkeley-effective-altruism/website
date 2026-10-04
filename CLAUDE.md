@@ -144,7 +144,8 @@ there'd be no clean way to tell who actually applied to a cohort apart from
 who just found out too late).
 
 Two reminder emails run off that Form's response Sheet, and **both go to the
-organizer only** — this is not a mass-emailer. The Form/Sheet is just a
+organizer only, CC'd to two other officers** (the `CC_EMAILS` constant in the
+script) — this is not a mass-emailer. The Form/Sheet is just a
 holding pen; nothing here emails the people on the list automatically. The
 organizer reaches out to them personally, in their own words, using the list
 these reminders point to:
@@ -171,9 +172,10 @@ non-developer maintainer to learn:
   year** — spring start date changes annually, and the crash-course date
   needs to match whatever date that event is actually scheduled each
   semester. Nothing reminds you to update these.
-- The organizer's recipient address is also a named constant
-  (`ORGANIZER_EMAIL`) at the top of the script, next to the two dates — easy
-  to swap without touching the rest of the logic.
+- The organizer's recipient address (`ORGANIZER_EMAIL`) and the CC list
+  (`CC_EMAILS`, comma-separated) are also named constants at the top of the
+  script, next to the dates — easy to swap without touching the rest of the
+  logic.
 - First run of the script requires a one-time Google OAuth consent click
   from whoever has access to the organizing account.
 
