@@ -48,6 +48,7 @@ evaluate it at that point — don't add tooling preemptively.
 ├── about.html         # about the club
 ├── fellowship.html    # fellowship program info
 ├── events.html        # events page
+├── slack/index.html   # redirect: eaberkeley.com/slack -> Slack invite (update if the invite link changes; same link is in each page's footer)
 ├── favicon.png        # browser tab icon (from the club logo)
 ├── css/
 │   └── style.css       # shared site styles
