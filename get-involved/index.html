@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+  LEGACY-URL REDIRECT: eaberkeley.com/get-involved  ->  eaberkeley.com/fellowship.html
+
+  WHY THIS FILE EXISTS
+  The club's old Squarespace site was replaced by this static site, and the old
+  URLs stopped working (404). Links to those old URLs may still be out there on
+  the internet (old emails, flyers, Slack/Discord messages, other sites). We
+  discovered which old paths existed by querying the Internet Archive's
+  Wayback Machine CDX index for eaberkeley.com/* (done with Claude Code,
+  October 2026), then added a redirect for every old path that has an obvious
+  home on the new site, so visitors don't hit a dead end.
+
+  MAINTAINING IT
+  - Mapping, the full list, and paths we intentionally did NOT redirect are in
+    CLAUDE.md under "Redirects". Keep this file, that list, and
+    the target below in sync.
+  - Safe to delete once you're confident nobody links to this old URL anymore.
+  - GitHub Pages can't send real HTTP redirects, so this is a meta-refresh plus
+    a JS fallback. Search engines treat an instant meta refresh like a redirect.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting&hellip; | Effective Altruism @ Berkeley</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://eaberkeley.com/fellowship.html">
+  <meta http-equiv="refresh" content="0; url=/fellowship.html">
+  <script>window.location.replace("/fellowship.html");</script>
+</head>
+<body>
+  <p>This page has moved. <a href="/fellowship.html">Click here if you are not redirected automatically</a>.</p>
+</body>
+</html>

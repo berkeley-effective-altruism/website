@@ -48,7 +48,10 @@ evaluate it at that point — don't add tooling preemptively.
 ├── about.html         # about the club
 ├── fellowship.html    # fellowship program info
 ├── events.html        # events page
-├── slack/index.html   # redirect: eaberkeley.com/slack -> Slack invite (update if the invite link changes; same link is in each page's footer)
+├── slack/index.html   # redirect -> Slack invite (see "Redirects" below)
+├── <old-path>/index.html  # 14 more one-file redirect folders for legacy
+│                      #   Squarespace URLs (fellowships/, contact/, board/, ...);
+│                      #   full list + rationale in "Redirects" below
 ├── favicon.png        # browser tab icon (from the club logo)
 ├── css/
 │   └── style.css       # shared site styles
@@ -70,6 +73,55 @@ content/data layer — copy is edited in place in the HTML. If the amount of
 content or the frequency of edits ever makes that painful, consider a simple
 data-driven approach (e.g. a JSON/YAML file of events rendered via a small
 script) rather than jumping straight to a framework.
+
+## Redirects
+
+**If you're wondering why the repo root is full of tiny folders like
+`fellowships/`, `contact/`, `board/`: they're redirects, not pages. Don't
+delete them as clutter, and don't "fix" them into real pages.**
+
+**Why they exist.** This site replaced an old Squarespace site. The old URLs
+stopped working, but links to them are likely still out on the internet (old
+emails, flyers, Slack messages, other sites) and would land on a GitHub Pages
+404. In October 2026, using Claude Code, we found which old
+`eaberkeley.com/<path>` URLs existed by querying the Internet Archive's
+Wayback Machine CDX index (`https://web.archive.org/cdx/search/cdx?url=eaberkeley.com/*&output=txt&fl=original,statuscode&collapse=urlkey`),
+checked which of those 404'd on the live site, and added a redirect for each
+one that has an obvious home on the new site. (Plain web search can't do this —
+it ignores `site:` operators and doesn't expose inbound links; the Wayback CDX
+index is what worked.)
+
+**How they work.** GitHub Pages can't send real HTTP redirects, so each
+redirect is `<path>/index.html` containing a meta-refresh, a JS
+`location.replace` fallback, a `canonical` link, and `noindex`. Every file has a
+header comment explaining all of this. `eaberkeley.com/<path>` (no trailing
+slash) gets a 301 to `/<path>/` from Pages, then the page forwards.
+
+| Old path(s) | Goes to |
+|---|---|
+| `/slack` | the club's Slack invite (**external** URL; if the invite expires, update `slack/index.html` *and* the page footers — grep `join.slack.com`) |
+| `/fellowships`, `/readinggroups`, `/get-involved`, `/take-action` | `/fellowship.html` |
+| `/home` | `/index.html` |
+| `/what-we-do`, `/about-1`, `/board`, `/faqs`, `/contact`, `/feedback` | `/about.html` |
+| `/calendar-1`, `/fun-photos`, `/projects` | `/events.html` |
+
+The target for each is a judgment call based on the old page's name (we only
+had URLs, not the old content) — retarget freely if a better home exists.
+
+**Intentionally NOT redirected** (existed on the old site, no equivalent on the
+new one, so they still 404): the contest/AIMS pages (`/aims-directory`,
+`/aims-distillation`, `/aims-mini-elk`, `/aims-contest-series`, `/contests`,
+`/distillation-contest-winners`, `/past-winners`, `/global-warning-contest`,
+`/good-futures-initiative`, `/workflows`, `/edit-your-own-source-code`) and
+`/decal`. These appear to have been a separate project that shared the domain.
+If one of them turns out to matter, add a redirect folder the same way, or
+build a real page.
+
+**Adding or removing one.** Copy any redirect folder (e.g. `board/`), rename the
+folder to the old path, change the target in all four places in the file, and
+add a row above. To retire one, delete the folder and its row. Remember to
+preview locally and push — new folders are published on push to `main` like
+everything else.
 
 ## Previewing locally
 
