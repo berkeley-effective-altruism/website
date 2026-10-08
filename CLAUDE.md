@@ -234,8 +234,12 @@ non-developer maintainer to learn:
 
 **Status as of this writing:** the Form, Sheet, and Script are all built,
 both reminder functions have been manually tested (each sends a working
-email to the organizer), the Form is **published and live**, and its real
-URL is wired into `fellowship.html`'s "Missed the deadline?" card. The
+email to the organizer), and the Form is **published and live**. As of
+October 2026 it is **no longer linked from the site**: the "Missed the
+deadline?" button on `fellowship.html` (and the homepage callout) now point
+straight to the Crash Course Luma page (`https://luma.com/atfcos5b`) instead,
+so the Sheet only holds responses collected before that switch. To resume
+interest capture, put the Form URL back on that button. The
 `SPRING_REMINDER_DATE` constant in the script is still a placeholder —
 confirm the real UC Berkeley spring 2027 start date and update it before
 that trigger matters.
