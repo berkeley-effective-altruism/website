@@ -48,6 +48,12 @@ evaluate it at that point — don't add tooling preemptively.
 ├── about.html         # about the club
 ├── fellowship.html    # fellowship program info
 ├── events.html        # events page
+├── 404.html           # shown by GitHub Pages for any URL that doesn't exist
+│                      #   (its local links start with "/" since it can
+│                      #   appear at any path depth)
+├── CNAME              # custom domain for GitHub Pages; see "Deployment"
+├── robots.txt         # points search engines at sitemap.xml
+├── sitemap.xml        # list of the real pages; add an entry per new page
 ├── slack/index.html   # redirect -> Slack invite (see "Redirects" below)
 ├── <old-path>/index.html  # 14 more one-file redirect folders for legacy
 │                      #   Squarespace URLs (fellowships/, contact/, board/, ...);
@@ -160,9 +166,26 @@ Note that absolute URLs elsewhere in the repo (the Open Graph `og:image` and
 domain ever changes, those need updating too — social link previews break
 silently otherwise, with no visible error on the site itself.
 
-**Still undocumented:** which DNS provider the domain is registered with, and
-who holds the account. A future maintainer will need this if the domain has to
-be moved or renewed. Whoever knows: please add it here.
+**Domain registration and DNS: Squarespace.** `eaberkeley.com` is registered
+with Squarespace Domains (left over from the old Squarespace site), and its
+DNS records are managed there too. The domain belongs to whichever Squarespace
+account it sits in, and the club officers share that login. To change DNS or
+check renewal: log in to Squarespace > Domains > `eaberkeley.com`.
+
+- **Renewal:** the registration runs to **July 16, 2027** and has renewed
+  each July so far (public registry record, checked November 2026). If it
+  lapses, the whole site goes down. Each year, confirm that auto-renew is on
+  and that the payment card on the Squarespace account still works; a
+  graduated officer's expired card is the likely way this breaks.
+- **Handover:** the Squarespace login is the one piece of this site that is
+  not covered by GitHub org membership. When officers rotate, pass it on
+  deliberately and make sure the account's email address is one the club
+  still controls (password resets and renewal warnings go there).
+- **Still undocumented:** which email address the Squarespace account is
+  under, and whose card pays for the domain. Whoever knows: please add it
+  here (not the password).
+- The DNS records point the domain at GitHub Pages (four `185.199.x.153`
+  A records). They only need touching if the site moves off GitHub Pages.
 
 ## Planned features (roadmap, not yet built)
 
@@ -186,12 +209,37 @@ lightest-weight approach that fits (e.g. an external scheduling tool embed,
 or a small backend/serverless function) rather than defaulting to a full
 framework rewrite of the whole site.
 
+## Mailing list signup (Mailchimp)
+
+The site's main call to action is a **mailing list signup** that posts
+straight to the club's **Mailchimp** audience. It replaced the old sitewide
+Google "Interest Form" in November 2026 (that Form is no longer linked from
+any page).
+
+- The form is a small hand-written `<form class="signup">` (email field +
+  Subscribe button), styled in `css/style.css`. We deliberately did **not**
+  paste Mailchimp's full embed code, which pulls in its own stylesheet,
+  jQuery, and a large script we don't need.
+- It appears in four places and they must be kept identical: `index.html`
+  (hero and the "Get connected" card), `about.html` ("Get involved" card),
+  and `events.html` ("Stay in the loop"). Grep `class="signup"` to find them.
+- Two values come from Mailchimp and are specific to the club's audience: the
+  form's `action` URL and the `name` of the hidden spam-trap input
+  (`b_<u>_<id>`). If the club ever switches Mailchimp audience or account,
+  get the new embed code from Mailchimp (Forms > Embedded form; the menu
+  location changes from time to time, so search Mailchimp for "embedded
+  form"), copy those two values out of it, and update all four forms.
+- Submitting opens Mailchimp's own confirmation page in a new tab. There is
+  no JavaScript on our side.
+- Only the email address is collected. To collect a name too, enable the
+  field in Mailchimp and add a matching input (e.g. `name="FNAME"`).
+
 ## Fellowship interest capture & reminder automation
 
 When a fellowship cohort's application deadline passes, `fellowship.html`
 switches from soliciting applications to capturing lightweight "interest"
 from people who missed the deadline, via a **dedicated Google Form** (kept
-separate from the sitewide "Interest Form" used elsewhere, so people who
+separate from the general mailing list signup, so people who
 missed a deadline don't get mixed into the general interest list — otherwise
 there'd be no clean way to tell who actually applied to a cohort apart from
 who just found out too late).
@@ -234,19 +282,21 @@ non-developer maintainer to learn:
 
 **Status as of this writing:** the Form, Sheet, and Script are all built,
 both reminder functions have been manually tested (each sends a working
-email to the organizer), and the Form is **published and live**. As of
-October 2026 it is **no longer linked from the site**: the "Missed the
-deadline?" button on `fellowship.html` (and the homepage callout) now point
-straight to the Crash Course Luma page (`https://luma.com/atfcos5b`) instead,
-so the Sheet only holds responses collected before that switch. To resume
-interest capture, put the Form URL back on that button. The
+email to the organizer), and the Form is **published and live**. During
+October 2026 the "Missed the deadline?" button on `fellowship.html` (and a
+homepage callout) pointed to the Crash Course Luma page instead, so the Sheet
+has a gap for that period. In November 2026, after the Crash Course (October
+24th) had passed, the Crash Course mentions were removed from the site and
+the button was pointed back at the Form. The Crash Course nudge email in the
+script still exists; its date constant needs a new date (or the trigger
+removing) if the event isn't run again. The
 `SPRING_REMINDER_DATE` constant in the script is still a placeholder —
 confirm the real UC Berkeley spring 2027 start date and update it before
 that trigger matters.
 
 None of this lives in this git repo — the Form, Sheet, and Script live in
 Google Drive under the club's account. `fellowship.html` only links out to
-the Form and mentions the Crash Course date in copy.
+the Form.
 
 ## Ownership & access
 

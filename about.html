@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
@@ -55,7 +56,7 @@
         <div class="card reveal">
           <div class="avatar" aria-hidden="true">I</div>
           <h3>Ian</h3>
-          <p><a target="_blank" rel="noopener" href="https://calendly.com/ianhabichramirez/coffee-chat?month=2026-02">Book a chat &rarr;</a></p>
+          <p><a target="_blank" rel="noopener" href="https://calendly.com/ianhabichramirez/coffee-chat">Book a chat &rarr;</a></p>
         </div>
         <div class="card reveal">
           <div class="avatar" aria-hidden="true">J</div>
@@ -98,10 +99,17 @@
           <p><a class="button" href="https://join.slack.com/t/ea-uc-berkeley/shared_invite/zt-485vkmame-dAYlWe1rbNuKEkM9CedIZg" target="_blank" rel="noopener">Join</a></p>
         </div>
         <div class="card reveal">
-          <h3>Fill out our Interest Form!</h3>
-          <p>Stay connected through our newsletter and fellowship
-          opportunities!</p>
-          <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSe_Bw640Gnh8pztHt3qAjNURnP0NVr-wkCE8AraPTW8aI7SKA/viewform" target="_blank" rel="noopener">Form Link &rarr;</a></p>
+          <h3>Join our mailing list!</h3>
+          <p>Events, fellowship applications, and club news.</p>
+          <!-- Mailing list signup: posts straight to Mailchimp. The same form appears
+               on index.html (twice), about.html and events.html; keep them in sync. -->
+          <form class="signup" action="https://eaberkeley.us21.list-manage.com/subscribe/post?u=d9fc058a274aa0c5d41d58e26&amp;id=7a2ae488c7&amp;f_id=00a19be6f0" method="post" target="_blank">
+            <label class="visually-hidden" for="signup-email-card">Email address</label>
+            <input type="email" name="EMAIL" id="signup-email-card" placeholder="you@berkeley.edu" autocomplete="email" required>
+            <!-- Mailchimp spam trap: hidden from people, bots fill it in. Leave as is. -->
+            <div class="signup-trap" aria-hidden="true"><input type="text" name="b_d9fc058a274aa0c5d41d58e26_7a2ae488c7" tabindex="-1" value=""></div>
+            <button class="button" type="submit">Subscribe</button>
+          </form>
         </div>
         <div class="card reveal">
           <h3>Join us at a meeting!</h3>

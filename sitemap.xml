@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- List of the site's real pages, for search engines. Add a <url> entry when
+     you add a page. Redirect folders (board/, slack/, ...) do not belong here. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://eaberkeley.com/</loc></url>
+  <url><loc>https://eaberkeley.com/about.html</loc></url>
+  <url><loc>https://eaberkeley.com/fellowship.html</loc></url>
+  <url><loc>https://eaberkeley.com/events.html</loc></url>
+</urlset>
